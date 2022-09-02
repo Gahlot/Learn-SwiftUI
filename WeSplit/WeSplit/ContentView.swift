@@ -9,11 +9,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var name = ""
+    var array = ["Mahesh", "Akshay", "Li xiao"]
+    @State private var selectedItem = "Mahesh"
     var body: some View {
-        Form {
-            TextField("Enter your name", text: $name)
-            Text("your Name:- \(name)")
+        NavigationView {
+            Form {
+                Picker("Select your Name", selection: $selectedItem) {
+                    ForEach.init(array, id: \.self) {
+                        Text($0)
+                    }
+                }
+            }
         }
         
     }
