@@ -9,22 +9,52 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
+        VStack {
+            Button("Delete All", role: .destructive ,action: executeDelete)
             
-            VStack(spacing: 0) {
-                Color.red
-                Color.blue
-                Color(red: 1, green: 1, blue: 0)
+            Button("Button 1") { }
+            .buttonStyle(.bordered)
+            Button("Button 2", role: .destructive) { }
+            .buttonStyle(.bordered)
+            Button("Button 3") { }
+            .buttonStyle(.borderedProminent)
+            Button("Button 4", role: .destructive) { }
+            .buttonStyle(.borderedProminent)
+            
+            //Custtom Button
+            Button {
+                print("Custom Button")
+            } label: {
+                Text("Custom Button")
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(.red)
+                    .cornerRadius(10)
+                    
             }
             
+            Image(systemName: "pencil")
+                .frame(width: 60, height: 60, alignment: .center)
             
-            Text("Hello, world!")
-                .padding(50)
-                .foregroundStyle(.secondary)
-                .background(.ultraThinMaterial)
+            Button {
+                print("Image Button")
+            } label: {
+                Image(systemName: "pencil")
+            }
             
+            Button {
+                print("Image with Text Button")
+            } label: {
+                Label("Click Me", systemImage: "pencil")
+            }
+                
+                
         }
         
+    }
+    
+    func executeDelete() {
+        print("Delete")
     }
     
 }
