@@ -17,17 +17,25 @@ struct ContentView: View {
         NavigationView {
             Form {
                 Section {
-                    
                     TextField("", value: $amountValue, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                         .keyboardType(.decimalPad)
-                }
-                Section {
                     Picker.init("Number of people", selection: $numberOfPeople) {
                         ForEach(2..<100) {
                             Text("\($0) people")
                         }
                     }
                 }
+                Section {
+                    Picker("Tip Percentage", selection: $tipPercentage) {
+                        ForEach(tipPercentages, id: \.self) {
+                            Text($0, format: .percent)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                } header: {
+                    Text("Select Tip Percentage")
+                }
+                
             }
             .navigationTitle("WeSplit")
         }
