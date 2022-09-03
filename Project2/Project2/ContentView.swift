@@ -8,46 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showAlert = false
     var body: some View {
         VStack {
-            Button("Delete All", role: .destructive ,action: executeDelete)
-            
-            Button("Button 1") { }
-            .buttonStyle(.bordered)
-            Button("Button 2", role: .destructive) { }
-            .buttonStyle(.bordered)
-            Button("Button 3") { }
-            .buttonStyle(.borderedProminent)
-            Button("Button 4", role: .destructive) { }
-            .buttonStyle(.borderedProminent)
-            
-            //Custtom Button
-            Button {
-                print("Custom Button")
-            } label: {
-                Text("Custom Button")
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(.red)
-                    .cornerRadius(10)
+            Button("Show Alert") {
+                self.showAlert = true
+            }
+            .alert("Imp Message", isPresented: $showAlert) {
+                Button("Cancel", role: .cancel) {
                     
+                }
+                Button("Delete", role: .destructive) {
+                    
+                }
+            } message: {
+                Text("This is a message")
             }
-            
-            Image(systemName: "pencil")
-                .frame(width: 60, height: 60, alignment: .center)
-            
-            Button {
-                print("Image Button")
-            } label: {
-                Image(systemName: "pencil")
-            }
-            
-            Button {
-                print("Image with Text Button")
-            } label: {
-                Label("Click Me", systemImage: "pencil")
-            }
-                
+
                 
         }
         
