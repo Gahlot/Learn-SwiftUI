@@ -8,24 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showAlert = false
+    var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"]
     var body: some View {
-        VStack {
-            Button("Show Alert") {
-                self.showAlert = true
-            }
-            .alert("Imp Message", isPresented: $showAlert) {
-                Button("Cancel", role: .cancel) {
+        ZStack {
+            Color.blue
+                .ignoresSafeArea()
+            VStack {
+                ForEach(countries, id: \.self) { country in
+                    Button{
+                        print(country)
+                    } label: {
+                        Image(country)
+                    }
                     
                 }
-                Button("Delete", role: .destructive) {
-                    
-                }
-            } message: {
-                Text("This is a message")
             }
-
-                
         }
         
     }
